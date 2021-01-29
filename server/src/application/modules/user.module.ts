@@ -7,7 +7,9 @@ import {
 import { UserModelRepository } from '@/infrastructure/adapter/persisters/mongoose/UserModel.repository';
 import { UserDITokens } from '@/core/domain/user';
 import { CreateUserService } from '@/core/service/user/CreateUserService';
+import { FindUserByIdService } from '@/core/service/user/FindUserByIdService';
 import { CreateUserMutation } from '../graphql/mutations/create-user-mutation';
+import { FindUserByIdQuery } from '../graphql/resolvers/user/find-user-by-id-query';
 
 const PersisterProviders: Provider[] = [
   {
@@ -22,9 +24,14 @@ const UseCaseProviders: Provider[] = [
     inject: [UserDITokens.UserRepositoryToken],
     useFactory: userRepository => new CreateUserService(userRepository),
   },
+  {
+    provide: UserDITokens.FindUserByIdUseCase,
+    inject: [UserDITokens.UserRepositoryToken],
+    useFactory: userRepository => new FindUserByIdService(userRepository),
+  },
 ];
 
-const ResolversProviders: Provider[] = [CreateUserMutation];
+const ResolversProviders: Provider[] = [CreateUserMutation, FindUserByIdQuery];
 
 const MongooseModuleImport = MongooseModule.forFeature([
   { name: UserModel.name, schema: UserSchema },
