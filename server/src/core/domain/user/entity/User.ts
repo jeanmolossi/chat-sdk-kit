@@ -1,7 +1,7 @@
 import { IsString, IsOptional, IsUrl, IsDate } from 'class-validator';
 import { v4 } from 'uuid';
 import { Entity, Optional } from '@/core/common';
-import { ICreateUserPayload } from './common-types';
+import { ICreateUserPayload, IUserInfo } from '@/core/domain/user';
 
 export class User extends Entity<string> {
   @IsString({ message: 'Você deve enviar um nome válido' })
@@ -35,6 +35,16 @@ export class User extends Entity<string> {
     this.photo = photo;
     this.created_at = created_at;
     this.updated_at = updated_at;
+  }
+
+  getUser(): IUserInfo {
+    return {
+      id: this.id,
+      name: this.name,
+      photo: this.photo,
+      created_at: this.created_at,
+      updated_at: this.updated_at,
+    };
   }
 
   static async new(payload: ICreateUserPayload): Promise<User> {
