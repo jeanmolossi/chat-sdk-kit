@@ -3,17 +3,31 @@
 # ------------------------------------------------------
 
 type HelloWorldData {
+  """Campo com o código de status da resposta da requisição"""
   statusCode: Int!
+
+  """Mensagem de feedback da requisição"""
   message: String!
+
+  """Unix timestamp do momento da requisição"""
   timestamp: Float!
   data: String
 }
 
 type CreateUserAdapter {
+  """Campo identificador gerado automaticamente"""
   id: String
+
+  """Campo com o nome do usuário"""
   name: String!
+
+  """Campo com a Url da photo do perfil do usuário"""
   photo: String
+
+  """Campo Date gerado automaticamente"""
   created_at: DateTime
+
+  """Campo Date gerado automaticamente"""
   updated_at: DateTime
 }
 
@@ -23,8 +37,13 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type UserResponseData {
+  """Campo com o código de status da resposta da requisição"""
   statusCode: Int!
+
+  """Mensagem de feedback da requisição"""
   message: String!
+
+  """Unix timestamp do momento da requisição"""
   timestamp: Float!
   data: CreateUserAdapter!
 }
@@ -39,9 +58,18 @@ type Mutation {
 }
 
 input CreateUserInput {
+  """Não precisa enviar, será gerado automáticamente"""
   id: String
+
+  """Campo com o nome do usuário"""
   name: String!
+
+  """Url da foto de perfil do usuário"""
   photo: String
+
+  """Campo Date gerado automaticamente"""
   created_at: DateTime
+
+  """Campo Date gerado automaticamente"""
   updated_at: DateTime
 }
