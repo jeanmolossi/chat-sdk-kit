@@ -6,4 +6,8 @@ export class UserDITokens {
   static readonly FindUserByIdUseCase: unique symbol = Symbol(
     'FindUserByIdUseCase',
   );
+
+  static readonly UserRepositoryToken: unique symbol = Symbol(
+    'UserRepositoryToken',
+  );
 }

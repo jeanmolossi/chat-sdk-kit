@@ -9,7 +9,39 @@ type HelloWorldData {
   data: String
 }
 
+type CreateUserAdapter {
+  id: String
+  name: String!
+  photo: String
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type UserResponseData {
+  statusCode: Int!
+  message: String!
+  timestamp: Float!
+  data: CreateUserAdapter!
+}
+
 type Query {
   """Mensagem de Hello World"""
   helloWorld: HelloWorldData!
+}
+
+type Mutation {
+  createUser(user: CreateUserInput!): UserResponseData!
+}
+
+input CreateUserInput {
+  id: String
+  name: String!
+  photo: String
+  created_at: DateTime
+  updated_at: DateTime
 }
