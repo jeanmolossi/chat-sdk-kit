@@ -1,0 +1,15 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type HelloWorldData {
+  statusCode: Int!
+  message: String!
+  timestamp: Float!
+  data: String
+}
+
+type Query {
+  """Mensagem de Hello World"""
+  helloWorld: HelloWorldData!
+}
