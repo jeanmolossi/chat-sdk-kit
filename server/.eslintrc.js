@@ -25,13 +25,6 @@ module.exports = {
     'no-useless-constructor': 'off',
 
     'import/prefer-default-export': 'off',
-    'import/no-unresolved': 'error',
-    'import/extensions': [
-      'error',
-      {
-        extension: ['.ts', '.js'],
-      },
-    ],
 
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

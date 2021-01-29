@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
+    "lib": ["ES5", "ES6", "ESNext"],
+    "esModuleInterop": true,
+    "strictPropertyInitialization": false,
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
@@ -13,6 +17,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "rootDirs": ["./src", "./test"],
     "incremental": true
   }
 }
