@@ -1,0 +1,3 @@
+{
+  "*.{ts}": ["yarn run eslint './src/**' --fix", "yarn test"]
+}
