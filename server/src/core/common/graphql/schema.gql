@@ -14,21 +14,21 @@ type HelloWorldData {
   data: String
 }
 
-type CreateUserAdapter {
-  """Campo identificador gerado automaticamente"""
-  id: String
+type UserDTOAdapter {
+  """Identificador do usuário"""
+  id: String!
 
-  """Campo com o nome do usuário"""
+  """Nome do usuário"""
   name: String!
 
-  """Campo com a Url da photo do perfil do usuário"""
+  """Url da foto de perfil do usuário"""
   photo: String
 
-  """Campo Date gerado automaticamente"""
-  created_at: DateTime
+  """Data em que foi criado o usuário (IsoFormat)"""
+  created_at: DateTime!
 
-  """Campo Date gerado automaticamente"""
-  updated_at: DateTime
+  """Data em que foi atualizado o usuário (IsoFormat)"""
+  updated_at: DateTime!
 }
 
 """
@@ -45,12 +45,18 @@ type UserResponseData {
 
   """Unix timestamp do momento da requisição"""
   timestamp: Float!
-  data: CreateUserAdapter!
+
+  """Dados do usuário"""
+  data: UserDTOAdapter
 }
 
 type Query {
   """Mensagem de Hello World"""
   helloWorld: HelloWorldData!
+  findUserById(
+    """Identificador único do usuário"""
+    id: String!
+  ): UserResponseData!
 }
 
 type Mutation {

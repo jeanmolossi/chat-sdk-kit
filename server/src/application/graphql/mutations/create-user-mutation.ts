@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
-import { Args, Field, Mutation, ObjectType, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { UserResponseData } from '@/infrastructure/adapter/graphql/user/UserDTOAdapter';
 import { CreateUserAdapter } from '@/infrastructure/adapter/usecase/user/CreateUserAdapter';
-import { CoreApiResponseType } from '@/infrastructure/graphql/graphql-response-adapter';
 import { CoreApiResponse } from '@/core/common';
 import {
   ICreateUserUseCase,
@@ -9,12 +9,6 @@ import {
   UserUseCaseDTO,
 } from '@/core/domain/user';
 import { CreateUserInput } from '../inputs/user/CreateUserInput';
-
-@ObjectType()
-class UserResponseData extends CoreApiResponseType {
-  @Field(() => CreateUserAdapter)
-  data: CreateUserAdapter;
-}
 
 @Resolver()
 export class CreateUserMutation {
