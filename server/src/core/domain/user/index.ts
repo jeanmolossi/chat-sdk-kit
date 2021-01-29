@@ -8,3 +8,5 @@ export * from './port/peristence/UserRepositoryPort';
 export * from './port/usecase/CreateUserUseCasePort';
 
 export * from './usecase/dto/UserUseCaseDTO';
+
+export * from './usecase/CreateUserUseCase';
