@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Optional } from '@/core/common';
+import { IQueryBy, Optional, RepositoryOptions } from '@/core/common';
 import { IUserRepositoryPort, User } from '@/core/domain/user';
 import { UserDocument, UserModel } from './UserModel.entity';
 import { UserModelMapper } from './UserModel.mapper';
@@ -26,5 +26,17 @@ export class UserModelRepository implements IUserRepositoryPort {
     if (!foundUser) return undefined;
 
     return UserModelMapper.toDomainEntity(foundUser);
+  }
+
+  async findUser(by: IQueryBy, options?: RepositoryOptions.FindOptions) {
+    let domainUser: Optional<User>;
+
+    const user = await this.userModel.findOne(by, options);
+
+    if (user) {
+      domainUser = UserModelMapper.toDomainEntity(user);
+    }
+
+    return domainUser;
   }
 }
