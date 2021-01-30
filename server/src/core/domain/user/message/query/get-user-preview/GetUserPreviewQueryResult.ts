@@ -1,6 +1,7 @@
 interface IGetUserPreviewQueryResultPayload {
   id: string;
   name: string;
+  photo?: string;
 }
 
 export class GetUserPreviewQueryResult {
@@ -8,9 +9,12 @@ export class GetUserPreviewQueryResult {
 
   readonly name: string;
 
-  constructor({ id, name }: IGetUserPreviewQueryResultPayload) {
+  readonly photo?: string;
+
+  constructor({ id, name, photo }: IGetUserPreviewQueryResultPayload) {
     this.id = id;
     this.name = name;
+    this.photo = photo;
   }
 
   static new(
