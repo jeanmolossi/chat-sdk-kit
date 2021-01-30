@@ -1,6 +1,7 @@
-import { IsString, IsOptional, IsUrl, IsDate } from 'class-validator';
+import { IsString, IsOptional, IsUrl, IsDate, IsEnum } from 'class-validator';
 import { v4 } from 'uuid';
 import { Entity, Optional } from '@/core/common';
+import { UserRole } from '@/core/common/enums/UserRole';
 import { ICreateUserPayload, IUserInfo } from '@/core/domain/user';
 
 export class User extends Entity<string> {
@@ -10,6 +11,12 @@ export class User extends Entity<string> {
   @IsUrl({}, { message: 'Você deve enviar uma url válida' })
   @IsOptional()
   private photo?: Optional<string>;
+
+  @IsEnum(UserRole, {
+    message: 'Você deve fornecer um valor válido como UserRole',
+  })
+  @IsOptional()
+  private role?: Optional<UserRole>;
 
   @IsDate({ message: 'Você deve enviar uma data válida' })
   @IsOptional()
@@ -26,6 +33,7 @@ export class User extends Entity<string> {
       id = v4(),
       name,
       photo,
+      role = UserRole.GUEST,
       created_at = new Date(),
       updated_at = new Date(),
     } = payload;
@@ -33,6 +41,7 @@ export class User extends Entity<string> {
     this.id = id;
     this.name = name;
     this.photo = photo;
+    this.role = role;
     this.created_at = created_at;
     this.updated_at = updated_at;
   }
@@ -42,6 +51,7 @@ export class User extends Entity<string> {
       id: this.id,
       name: this.name,
       photo: this.photo,
+      role: this.role,
       created_at: this.created_at,
       updated_at: this.updated_at,
     };
