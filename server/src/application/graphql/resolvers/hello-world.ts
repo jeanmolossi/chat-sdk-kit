@@ -1,12 +1,6 @@
-import { Resolver, Query, ObjectType, Field } from '@nestjs/graphql';
-import { CoreApiResponseType } from '@/infrastructure/graphql/graphql-response-adapter';
+import { Resolver, Query } from '@nestjs/graphql';
+import { HelloWorldData } from '@/infrastructure/adapter/graphql/hello-world/HelloWorldData';
 import { CoreApiResponse } from '@/core/common/api/CoreApiResponse';
-
-@ObjectType()
-class HelloWorldData extends CoreApiResponseType {
-  @Field(() => String, { nullable: true })
-  data: string;
-}
 
 @Resolver()
 export default class HelloWorld {
