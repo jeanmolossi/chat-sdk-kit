@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { v4 } from 'uuid';
+import { UserRole } from '@/core/common/enums/UserRole';
 
 export type UserDocument = UserModel & Document;
 
@@ -14,6 +15,9 @@ export class UserModel {
 
   @Prop()
   photo?: string;
+
+  @Prop()
+  role?: UserRole;
 
   @Prop()
   created_at?: Date;

@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { UserRole } from '@/core/common/enums/UserRole';
 import { ICreateUserUsePort } from '@/core/domain/user';
 
 @InputType()
@@ -20,6 +21,13 @@ export class CreateUserInput implements ICreateUserUsePort {
     description: 'Url da foto de perfil do usuário',
   })
   photo?: string;
+
+  @Field(() => String, {
+    nullable: true,
+    description: 'Role do usuário',
+    defaultValue: UserRole.GUEST,
+  })
+  role?: UserRole;
 
   @Field(() => Date, {
     nullable: true,

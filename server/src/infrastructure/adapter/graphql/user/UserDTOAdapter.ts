@@ -1,5 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { CoreApiResponseType } from '@/infrastructure/adapter/graphql/common';
+import { UserRole } from '@/core/common/enums/UserRole';
 import { UserUseCaseDTO } from '@/core/domain/user';
 
 @ObjectType()
@@ -18,6 +19,13 @@ export class UserDTOAdapter implements UserUseCaseDTO {
     description: 'Url da foto de perfil do usuário',
   })
   photo: string;
+
+  @Field(() => String, {
+    nullable: false,
+    description: 'Role do usuário',
+    defaultValue: UserRole.GUEST,
+  })
+  role: UserRole;
 
   @Field(() => Date, {
     nullable: false,

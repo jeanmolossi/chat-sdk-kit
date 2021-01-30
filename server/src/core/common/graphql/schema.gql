@@ -24,6 +24,9 @@ type UserDTOAdapter {
   """Url da foto de perfil do usuário"""
   photo: String
 
+  """Role do usuário"""
+  role: String!
+
   """Data em que foi criado o usuário (IsoFormat)"""
   created_at: DateTime!
 
@@ -74,6 +77,9 @@ input CreateUserInput {
 
   """Url da foto de perfil do usuário"""
   photo: String
+
+  """Role do usuário"""
+  role: String = "guest"
 
   """Campo Date gerado automaticamente"""
   created_at: DateTime
