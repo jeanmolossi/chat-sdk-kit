@@ -53,6 +53,8 @@ type UserResponseData {
 type Query {
   """Mensagem de Hello World"""
   helloWorld: HelloWorldData!
+
+  """Query de busca do usuário pelo Identificador"""
   findUserById(
     """Identificador único do usuário"""
     id: String!

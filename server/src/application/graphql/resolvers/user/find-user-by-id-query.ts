@@ -16,7 +16,9 @@ export class FindUserByIdQuery {
     private readonly findUserByIdUseCase: IFindUserByIdUseCase,
   ) {}
 
-  @Query(() => UserResponseData)
+  @Query(() => UserResponseData, {
+    description: 'Query de busca do usuário pelo Identificador',
+  })
   async findUserById(
     @Args({
       name: 'id',
