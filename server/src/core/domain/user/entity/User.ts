@@ -2,7 +2,7 @@ import { IsString, IsOptional, IsUrl, IsDate, IsEnum } from 'class-validator';
 import { v4 } from 'uuid';
 import { Entity, Optional } from '@/core/common';
 import { UserRole } from '@/core/common/enums/UserRole';
-import { ICreateUserPayload, IUserInfo } from '@/core/domain/user';
+import { ICreateUserPayload, UserType } from '@/core/domain/user';
 
 export class User extends Entity<string> {
   @IsString({ message: 'Você deve enviar um nome válido' })
@@ -46,7 +46,7 @@ export class User extends Entity<string> {
     this.updated_at = updated_at;
   }
 
-  getUser(): IUserInfo {
+  getUser(): UserType.UserInfo {
     return {
       id: this.id,
       name: this.name,

@@ -1,2 +1,2 @@
 export * from './CreateUserPayload';
-export * from './UserInfo';
+export * from './User';
