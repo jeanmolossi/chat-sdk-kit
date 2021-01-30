@@ -8,8 +8,8 @@ import {
   UserModelRepository,
 } from '@/infrastructure/adapter/persisters/mongoose';
 import { UserDITokens } from '@/core/domain/user';
-import { CreateUserService } from '@/core/service/user/CreateUserService';
-import { FindUserByIdService } from '@/core/service/user/FindUserByIdService';
+import { CreateUserService } from '@/core/service/user/usecase/CreateUserService';
+import { FindUserByIdService } from '@/core/service/user/usecase/FindUserByIdService';
 
 const PersisterProviders: Provider[] = [
   {
