@@ -10,4 +10,10 @@ export class UserDITokens {
   static readonly UserRepositoryToken: unique symbol = Symbol(
     'UserRepositoryToken',
   );
+
+  /**@section HANDLER */
+
+  static readonly GetUserPreviewQueryHandler: unique symbol = Symbol(
+    'GetUserPreviewQueryHandler',
+  );
 }
