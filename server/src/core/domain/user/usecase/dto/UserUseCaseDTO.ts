@@ -1,8 +1,10 @@
 import { Exclude, Expose, plainToClass } from 'class-transformer';
+import { UserRole } from '@/core/common/enums/UserRole';
+import { UserType } from '../../entity/common-types';
 import { User } from '../../entity/User';
 
 @Exclude()
-export class UserUseCaseDTO {
+export class UserUseCaseDTO implements UserType.IModel {
   @Expose()
   id: string;
 
@@ -11,6 +13,9 @@ export class UserUseCaseDTO {
 
   @Expose()
   photo: string;
+
+  @Expose()
+  role: UserRole;
 
   @Expose()
   created_at: Date;
