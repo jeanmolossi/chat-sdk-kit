@@ -1,15 +1,15 @@
 import { Module, Provider } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CreateUserMutation } from '@/application/graphql/mutations/create-user-mutation';
+import { FindUserByIdQuery } from '@/application/graphql/resolvers/user/find-user-by-id-query';
 import {
   UserModel,
   UserSchema,
-} from '@/infrastructure/adapter/persisters/mongoose/UserModel.entity';
-import { UserModelRepository } from '@/infrastructure/adapter/persisters/mongoose/UserModel.repository';
+  UserModelRepository,
+} from '@/infrastructure/adapter/persisters/mongoose';
 import { UserDITokens } from '@/core/domain/user';
 import { CreateUserService } from '@/core/service/user/CreateUserService';
 import { FindUserByIdService } from '@/core/service/user/FindUserByIdService';
-import { CreateUserMutation } from '../graphql/mutations/create-user-mutation';
-import { FindUserByIdQuery } from '../graphql/resolvers/user/find-user-by-id-query';
 
 const PersisterProviders: Provider[] = [
   {
