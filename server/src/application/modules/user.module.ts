@@ -7,7 +7,9 @@ import {
   UserSchema,
   UserModelRepository,
 } from '@/infrastructure/adapter/persisters/mongoose';
+import { NestWrapperGetUserPreviewQueryHandler } from '@/infrastructure/handler/user/NestWrapperGetUserPreviewQueryHandler';
 import { UserDITokens } from '@/core/domain/user';
+import { HandleGetUserPreviewQueryService } from '@/core/service/user/handler/HandleGetUserPreviewQueryService';
 import { CreateUserService } from '@/core/service/user/usecase/CreateUserService';
 import { FindUserByIdService } from '@/core/service/user/usecase/FindUserByIdService';
 
@@ -31,6 +33,16 @@ const UseCaseProviders: Provider[] = [
   },
 ];
 
+const HandlerProviders: Provider[] = [
+  NestWrapperGetUserPreviewQueryHandler,
+  {
+    provide: UserDITokens.GetUserPreviewQueryHandler,
+    inject: [UserDITokens.UserRepositoryToken],
+    useFactory: userModelRepository =>
+      new HandleGetUserPreviewQueryService(userModelRepository),
+  },
+];
+
 const ResolversProviders: Provider[] = [CreateUserMutation, FindUserByIdQuery];
 
 const MongooseModuleImport = MongooseModule.forFeature([
@@ -42,6 +54,7 @@ const MongooseModuleImport = MongooseModule.forFeature([
   providers: [
     ...PersisterProviders,
     ...UseCaseProviders,
+    ...HandlerProviders,
     ...ResolversProviders,
   ],
   exports: [UserDITokens.UserRepositoryToken],
