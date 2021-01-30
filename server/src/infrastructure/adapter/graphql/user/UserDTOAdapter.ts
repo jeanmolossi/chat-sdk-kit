@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { CoreApiResponseType } from '@/infrastructure/graphql/graphql-response-adapter';
+import { CoreApiResponseType } from '@/infrastructure/adapter/graphql/common';
 import { UserUseCaseDTO } from '@/core/domain/user';
 
 @ObjectType()

@@ -1,5 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
-import { CoreApiResponseType } from '@/infrastructure/config/graphql/graphql-response-adapter';
+import { CoreApiResponseType } from '@/infrastructure/adapter/graphql/common';
 
 @ObjectType()
 export class HelloWorldData extends CoreApiResponseType {
