@@ -8,6 +8,7 @@ import {
 } from '@/infrastructure/adapter/persisters/mongoose';
 import { MessageDITokens } from '@/core/domain/message';
 import { SendMessageService } from '@/core/service/message/usecase/SendMessageService';
+import { MessageSentSubscription } from '../graphql/subscriptions';
 
 const PersistersProviders: Provider[] = [
   {
@@ -24,7 +25,10 @@ const UseCaseProviders: Provider[] = [
   },
 ];
 
-const ResolversProviders: Provider[] = [SendMessageMutation];
+const ResolversProviders: Provider[] = [
+  SendMessageMutation,
+  MessageSentSubscription,
+];
 
 const MongooseModuleImport = MongooseModule.forFeature([
   { name: MessageModel.name, schema: MessageSchema },

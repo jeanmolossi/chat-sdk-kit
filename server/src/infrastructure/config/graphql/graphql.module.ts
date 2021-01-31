@@ -1,7 +1,14 @@
-import { Module } from '@nestjs/common';
+import { Module, Provider } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { PubSub } from 'graphql-subscriptions';
 import { join } from 'path';
 
+const OtherProviders: Provider[] = [
+  {
+    provide: 'PUB_SUB',
+    useValue: new PubSub(),
+  },
+];
 @Module({
   imports: [
     GraphQLModule.forRoot({
@@ -11,5 +18,7 @@ import { join } from 'path';
       autoSchemaFile: join(process.cwd(), 'src/core/common/graphql/schema.gql'),
     }),
   ],
+  providers: [...OtherProviders],
+  exports: ['PUB_SUB'],
 })
 export class GraphqlModule {}

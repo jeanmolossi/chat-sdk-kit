@@ -34,6 +34,8 @@ const resolverProviders: Provider[] = [HelloWorld];
     CoreDITokens.CommandBus,
     CoreDITokens.QueryBus,
     CoreDITokens.EventBus,
+    GraphqlModule,
+    MongooseModule,
   ],
 })
 export class InfrastructureModule {}
