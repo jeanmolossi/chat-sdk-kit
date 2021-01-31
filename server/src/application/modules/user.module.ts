@@ -45,12 +45,7 @@ const HandlerProviders: Provider[] = [
 
 const ResolversProviders: Provider[] = [CreateUserMutation, FindUserByIdQuery];
 
-const MongooseModuleImport = MongooseModule.forFeature([
-  { name: UserModel.name, schema: UserSchema },
-]);
-
 @Module({
-  imports: [MongooseModuleImport],
   providers: [
     ...PersisterProviders,
     ...UseCaseProviders,

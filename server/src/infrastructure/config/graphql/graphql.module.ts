@@ -9,6 +9,7 @@ const OtherProviders: Provider[] = [
     useValue: new PubSub(),
   },
 ];
+
 @Module({
   imports: [
     GraphQLModule.forRoot({
@@ -16,6 +17,7 @@ const OtherProviders: Provider[] = [
       debug: true,
       playground: true,
       autoSchemaFile: join(process.cwd(), 'src/core/common/graphql/schema.gql'),
+      cacheControl: false,
     }),
   ],
   providers: [...OtherProviders],

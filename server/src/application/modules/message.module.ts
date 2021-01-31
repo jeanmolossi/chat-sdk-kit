@@ -30,12 +30,7 @@ const ResolversProviders: Provider[] = [
   MessageSentSubscription,
 ];
 
-const MongooseModuleImport = MongooseModule.forFeature([
-  { name: MessageModel.name, schema: MessageSchema },
-]);
-
 @Module({
-  imports: [MongooseModuleImport],
   providers: [
     ...UseCaseProviders,
     ...PersistersProviders,
