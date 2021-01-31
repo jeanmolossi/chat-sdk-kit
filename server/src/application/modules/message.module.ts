@@ -1,5 +1,6 @@
 import { Module, Provider } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { SendMessageMutation } from '@/application/graphql/mutations';
 import {
   MessageModel,
   MessageModelRepositoryAdapter,
@@ -23,7 +24,7 @@ const UseCaseProviders: Provider[] = [
   },
 ];
 
-const ResolversProviders: Provider[] = [];
+const ResolversProviders: Provider[] = [SendMessageMutation];
 
 const MongooseModuleImport = MongooseModule.forFeature([
   { name: MessageModel.name, schema: MessageSchema },
