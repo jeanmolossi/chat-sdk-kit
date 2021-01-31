@@ -125,7 +125,7 @@ input CreateUserInput {
 
 input SendMessageInput {
   """O identificador deve ser um id válido"""
-  id: String = "da1088e0-1021-4dc7-9f9b-53be18c0808f"
+  id: String!
 
   """O texto da mensagem"""
   text: String!

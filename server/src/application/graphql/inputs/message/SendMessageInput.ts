@@ -1,12 +1,10 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { v4 } from 'uuid';
 import { ISendMessageUseCasePort } from '@/core/domain/message';
 
 @InputType()
 export class SendMessageInput implements ISendMessageUseCasePort {
   @Field(() => String, {
     description: 'O identificador deve ser um id válido',
-    defaultValue: v4(),
     nullable: false,
   })
   id?: string;
