@@ -12,6 +12,8 @@ export class SendMessageAdapter
   @IsUUID(4, { message: 'O Identificador deve ser um uuid v4 válido' })
   @IsOptional()
   id?: string = v4();
+
+  @Expose()
   @IsString({ message: 'O campo de texto deve ser um texto válido' })
   text: string;
 
@@ -32,10 +34,13 @@ export class SendMessageAdapter
   static async new(
     payload: ISendMessageUseCasePort,
   ): Promise<SendMessageAdapter> {
+    console.log({ payload });
     const adapter: SendMessageAdapter = plainToClass(
       SendMessageAdapter,
       payload,
     );
+
+    console.log(adapter);
 
     await adapter.validate();
 
