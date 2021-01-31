@@ -125,7 +125,7 @@ input CreateUserInput {
 
 input SendMessageInput {
   """O identificador deve ser um id válido"""
-  id: String!
+  id: String
 
   """O texto da mensagem"""
   text: String!
@@ -138,4 +138,8 @@ input SendMessageInput {
 
   """Data de atualização da mensagem"""
   updated_at: DateTime
+}
+
+type Subscription {
+  sentMessage: MessageDTOAdapter!
 }
