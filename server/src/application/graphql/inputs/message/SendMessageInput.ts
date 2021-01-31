@@ -5,7 +5,7 @@ import { ISendMessageUseCasePort } from '@/core/domain/message';
 export class SendMessageInput implements ISendMessageUseCasePort {
   @Field(() => String, {
     description: 'O identificador deve ser um id válido',
-    nullable: false,
+    nullable: true,
   })
   id?: string;
 
