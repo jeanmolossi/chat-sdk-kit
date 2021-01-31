@@ -1,5 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { PubSub } from 'graphql-subscriptions';
 import { SendMessageInput } from '@/application/graphql/inputs/message/SendMessageInput';
 import { MessageResponseData } from '@/infrastructure/adapter/graphql/message/MessageDTOAdapter';
 import { SendMessageAdapter } from '@/infrastructure/adapter/usecase/message/SendMessageAdapter';
@@ -15,6 +16,9 @@ export class SendMessageMutation {
   constructor(
     @Inject(MessageDITokens.SendMessageUseCase)
     private readonly sendMessageUseCase: SendMessageUseCase,
+
+    @Inject('PUB_SUB')
+    private readonly pubSub: PubSub,
   ) {}
 
   @Mutation(() => MessageResponseData)
@@ -29,6 +33,8 @@ export class SendMessageMutation {
     const adapter: SendMessageAdapter = await SendMessageAdapter.new(message);
 
     const sentMessage = await this.sendMessageUseCase.execute(adapter);
+
+    this.pubSub.publish('sentMessage', { sentMessage });
 
     return CoreApiResponse.success(sentMessage);
   }
