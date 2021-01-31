@@ -34,6 +34,7 @@ export class MessageDTOAdapter implements MessageUseCaseDTO {
   updated_at?: Date;
 }
 
+@ObjectType()
 export class MessageResponseData extends CoreApiResponseType {
   @Field(() => MessageDTOAdapter, {
     nullable: true,
