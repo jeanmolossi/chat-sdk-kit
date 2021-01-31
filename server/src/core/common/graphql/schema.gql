@@ -53,6 +53,37 @@ type UserResponseData {
   data: UserDTOAdapter
 }
 
+type MessageDTOAdapter {
+  """Id da mensagem"""
+  id: String!
+
+  """Texto da mensagem"""
+  text: String!
+
+  """Usuário que enviou a mensagem"""
+  user: String!
+
+  """Data de criação da mensagem"""
+  created_at: String
+
+  """Data de edição da mensagem"""
+  updated_at: String
+}
+
+type MessageResponseData {
+  """Campo com o código de status da resposta da requisição"""
+  statusCode: Int!
+
+  """Mensagem de feedback da requisição"""
+  message: String!
+
+  """Unix timestamp do momento da requisição"""
+  timestamp: Float!
+
+  """Dados da mensagem"""
+  data: MessageDTOAdapter
+}
+
 type Query {
   """Mensagem de Hello World"""
   helloWorld: HelloWorldData!
@@ -66,6 +97,10 @@ type Query {
 
 type Mutation {
   createUser(user: CreateUserInput!): UserResponseData!
+  sendMessage(
+    """Corpo da mensagem"""
+    message: SendMessageInput!
+  ): MessageResponseData!
 }
 
 input CreateUserInput {
@@ -85,5 +120,22 @@ input CreateUserInput {
   created_at: DateTime
 
   """Campo Date gerado automaticamente"""
+  updated_at: DateTime
+}
+
+input SendMessageInput {
+  """O identificador deve ser um id válido"""
+  id: String = "f40e4f1b-9805-4133-9439-872e5c83bb12"
+
+  """O texto da mensagem"""
+  text: String!
+
+  """O usuário que está enviando a mensagem"""
+  user: String!
+
+  """Data de envio da mensagem"""
+  created_at: DateTime
+
+  """Data de atualização da mensagem"""
   updated_at: DateTime
 }

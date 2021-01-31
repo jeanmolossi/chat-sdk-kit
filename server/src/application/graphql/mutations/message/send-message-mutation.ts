@@ -1,5 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { SendMessageInput } from '@/application/graphql/inputs/message/SendMessageInput';
 import { MessageResponseData } from '@/infrastructure/adapter/graphql/message/MessageDTOAdapter';
 import { SendMessageAdapter } from '@/infrastructure/adapter/usecase/message/SendMessageAdapter';
 import { CoreApiResponse } from '@/core/common';
@@ -8,7 +9,6 @@ import {
   MessageUseCaseDTO,
   SendMessageUseCase,
 } from '@/core/domain/message';
-import { SendMessageInput } from '../../inputs/message/SendMessageInput';
 
 @Resolver()
 export class SendMessageMutation {
