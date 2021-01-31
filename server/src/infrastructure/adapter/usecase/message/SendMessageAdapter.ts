@@ -34,13 +34,10 @@ export class SendMessageAdapter
   static async new(
     payload: ISendMessageUseCasePort,
   ): Promise<SendMessageAdapter> {
-    console.log({ payload });
     const adapter: SendMessageAdapter = plainToClass(
       SendMessageAdapter,
       payload,
     );
-
-    console.log(adapter);
 
     await adapter.validate();
 
