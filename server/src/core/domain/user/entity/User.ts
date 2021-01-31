@@ -38,7 +38,7 @@ export class User extends Entity<string> {
       updated_at = new Date(),
     } = payload;
 
-    this.id = id;
+    this._id = id;
     this.name = name;
     this.photo = photo;
     this.role = role;
@@ -48,7 +48,7 @@ export class User extends Entity<string> {
 
   getUser(): UserType.UserInfo {
     return {
-      id: this.id,
+      id: this._id,
       name: this.name,
       photo: this.photo,
       role: this.role,

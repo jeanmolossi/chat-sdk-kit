@@ -7,17 +7,17 @@ import {
 } from '@/core/common/util/class-validator/ClassValidator';
 
 export class Entity<T extends string | number> {
-  protected id: Optional<T>;
+  protected _id: Optional<T>;
 
   public getId(): T {
-    if (typeof this.id === 'undefined') {
+    if (typeof this._id === 'undefined') {
       throw Exception.new({
         code: Code.ENTITY_VALIDATION_ERROR,
         message: `${this.constructor.name}: O ID está vazio.`,
       });
     }
 
-    return this.id;
+    return this._id;
   }
 
   public async validate(): Promise<void> {

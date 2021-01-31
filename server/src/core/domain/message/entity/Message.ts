@@ -30,7 +30,7 @@ export class Message
   }: ICreateMessagePayload) {
     super();
 
-    this.id = id;
+    this._id = id;
     this.text = text;
     this.user = user;
     this.created_at = created_at;
