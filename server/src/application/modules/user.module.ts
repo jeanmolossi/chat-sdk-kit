@@ -1,6 +1,6 @@
 import { Module, Provider } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CreateUserMutation } from '@/application/graphql/mutations/create-user-mutation';
+import { CreateUserMutation } from '@/application/graphql/mutations';
 import { FindUserByIdQuery } from '@/application/graphql/resolvers/user/find-user-by-id-query';
 import {
   UserModel,
