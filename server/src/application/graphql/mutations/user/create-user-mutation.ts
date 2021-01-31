@@ -1,5 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { CreateUserInput } from '@/application/graphql/inputs';
 import { UserResponseData } from '@/infrastructure/adapter/graphql/user/UserDTOAdapter';
 import { CreateUserAdapter } from '@/infrastructure/adapter/usecase/user/CreateUserAdapter';
 import { CoreApiResponse } from '@/core/common';
@@ -8,7 +9,6 @@ import {
   UserDITokens,
   UserUseCaseDTO,
 } from '@/core/domain/user';
-import { CreateUserInput } from '../inputs/user/CreateUserInput';
 
 @Resolver()
 export class CreateUserMutation {
