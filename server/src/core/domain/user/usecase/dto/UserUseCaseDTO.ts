@@ -26,6 +26,8 @@ export class UserUseCaseDTO implements UserType.IModel {
   static newFromUser(user: User): UserUseCaseDTO {
     const dto: UserUseCaseDTO = plainToClass(UserUseCaseDTO, user);
 
+    dto.id = user.getId();
+
     return dto;
   }
 
